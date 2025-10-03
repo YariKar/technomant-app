@@ -1,11 +1,21 @@
-package entity;
+package com.technomant.app.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "articles")
+@Getter
+@Setter
+@AllArgsConstructor
 public class Article {
+
+    public Article() {}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
