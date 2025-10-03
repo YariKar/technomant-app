@@ -134,7 +134,7 @@ class ArticleIntegrationTest {
 
         articleRepository.save(createArticle("Article 3", now.minusDays(1)));
         articleRepository.save(createArticle("Article 4", now.minusDays(1)));
-        
+
         articleRepository.save(createArticle("Article 5", now.minusDays(2)));
     }
 
