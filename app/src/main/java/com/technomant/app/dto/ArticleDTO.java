@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ArticleDTO {
 
-    @JsonProperty("id") // Используем JsonProperty вместо SerializedName
+    @JsonProperty("id")
     private Long id;
 
     @JsonProperty("title")
@@ -25,7 +25,6 @@ public class ArticleDTO {
     @JsonProperty("publicationDate")
     private LocalDateTime publicationDate;
 
-    // Метод для преобразования в Entity
     public Article toEntity() {
         Article article = new Article();
         article.setTitle(this.title);

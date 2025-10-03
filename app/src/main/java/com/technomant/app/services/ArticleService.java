@@ -3,10 +3,8 @@ package com.technomant.app.services;
 import com.technomant.app.dto.ArticleDTO;
 import com.technomant.app.entity.Article;
 import com.technomant.app.repository.ArticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -36,7 +34,33 @@ public class ArticleService {
         articleRepository.deleteById(id);
     }
 
-    private void validateArticle(ArticleDTO articleDTO) {
+    private void validateArticle(ArticleDTO articleDTO) throws IllegalArgumentException {
+        if (articleDTO.getTitle() == null) {
+            throw new IllegalArgumentException("Title cannot be null");
+        }
+        if (articleDTO.getAuthor() == null) {
+            throw new IllegalArgumentException("Author cannot be null");
+        }
+        if (articleDTO.getContent() == null) {
+            throw new IllegalArgumentException("Content cannot be null");
+        }
+        if (articleDTO.getPublicationDate() == null) {
+            throw new IllegalArgumentException("Publication date cannot be null");
+        }
 
+        if (articleDTO.getTitle().length() > 100) {
+            throw new IllegalArgumentException("Title cannot exceed 100 characters");
+        }
+
+        if (articleDTO.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
+        if (articleDTO.getAuthor().trim().isEmpty()) {
+            throw new IllegalArgumentException("Author cannot be empty");
+        }
+        if (articleDTO.getContent().trim().isEmpty()) {
+            throw new IllegalArgumentException("Content cannot be empty");
+        }
     }
+
 }
