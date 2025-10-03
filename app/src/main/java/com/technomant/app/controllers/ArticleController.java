@@ -58,8 +58,4 @@ public class ArticleController {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("test")
-    public String getArticles() {
-        return "test endpoint";
-    }
 }
